@@ -1,0 +1,26 @@
+stages {
+  stage('Code Checkout') {
+    stages {
+      // One or more stages need to be included within the stages block.
+    }
+  }
+
+  stage('Code Build') {
+    stages {
+      // One or more stages need to be included within the stages block.
+    }
+  }
+
+  stage('Code Test') {
+    stages {
+      // One or more stages need to be included within the stages block.
+    }
+  }
+
+  stage('Code Deploy') {
+    stages {
+      // One or more stages need to be included within the stages block.
+    }
+  }
+
+}
