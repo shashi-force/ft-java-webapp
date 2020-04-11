@@ -13,12 +13,9 @@ pipeline {
       }
     }
     stage('Publish') {
-      when {
-        branch 'master'
-      }
-      steps {
-        withDockerRegistry([ credentialsId: "dockerhub", url: "https://hub.docker.com/repositories" ]) {
-          sh 'docker push sushanttickoo22/tomcat:latest'
+      steps   
+        {
+         sh 'docker push sushanttickoo22/tomcat:latest'
         }
       }
     }
