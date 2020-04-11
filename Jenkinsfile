@@ -17,7 +17,7 @@ pipeline {
         {
          sh 'docker push sushanttickoo22/tomcat:latest'
         }
-      }
+      
     }
-  }
+  } 
 }
