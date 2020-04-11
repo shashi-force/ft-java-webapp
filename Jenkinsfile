@@ -10,7 +10,9 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -f "Dockerfile" -t sushanttickoo22/tomcat:latest .'
+        script {
+          docker.build registry
+        }
       }
     }
   stage('Publish') {
