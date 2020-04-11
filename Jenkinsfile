@@ -37,14 +37,10 @@ stages {
     stages {
       echo "Deployment in progress."
       ssh jenkins@35.184.34.54
-      sudo chown -R jenkins:jenkins /app
-      sudo chmod 766 -R /app
       cd /app
       docker-compose -d up
       
       ssh jenkins@35.184.245.246
-      sudo chown -R jenkins:jenkins /app
-      sudo chmod 766 -R /app
       cd /app
       docker-compose -d up
     }
