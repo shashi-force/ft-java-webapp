@@ -36,10 +36,12 @@ stages {
       echo "Deployment in progress."
       ssh jenkins@35.184.34.54
       cd /app
+      docker-compose down
       docker-compose -d up
       
       ssh jenkins@35.184.245.246
       cd /app
+      docker-compose down
       docker-compose -d up
     }
 
