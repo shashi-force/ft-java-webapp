@@ -22,7 +22,7 @@ stages {
   stage('Code Build') {
     stages {
       echo "Building the project."
-      docker build . -t sushanttickoo22/tomcat
+      docker build  "gcr.io.sushanttickoo22/tomcat"
       docker push sushanttickoo22/tomcat
     }
 
