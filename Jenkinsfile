@@ -1,8 +1,4 @@
 pipeline {
-    environment {
-    registry = "sushanttickoo22/tomcat"
-    registryCredential = ‘dockerhub’
-  }
   agent { label 'slave' }
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
@@ -10,19 +6,13 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        script {
-          docker.build registry
-        }
+        sh 'docker build -f "Dockerfile" -t sushanttickoo22/tomcat:latest .'
       }
     }
   stage('Publish') {
-    steps{    script {
-      docker.withRegistry( '', registryCredential ) {
-        dockerImage.push()
-      }
-    }
-  }
-}
+      steps {
+          sh 'docker push sushanttickoo22/tomcat:latest'
+        }
     }
   }
 }
