@@ -118,7 +118,12 @@
 				<version>2.1.1</version>
 				<configuration>
 					<warName>Spring3HibernateApp</warName>
-				</configuration>
+				</configuration>	
+			</plugin>
+			<plugin>
+				<groupId>org.sonarasource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.3.0.603</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
@@ -450,24 +455,5 @@
 		</dependency>
 
 	</dependencies>
-	
-	<settings>
-    <pluginGroups>
-        <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
-    </pluginGroups>
-    <profiles>
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <!-- Optional URL to server. Default value is http://localhost:9000 -->
-                <sonar.host.url>
-                  http://34.69.242.192:9000
-                </sonar.host.url>
-            </properties>
-        </profile>
-     </profiles>
-</settings>
+
 </project>
