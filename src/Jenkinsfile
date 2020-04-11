@@ -1,11 +1,6 @@
 stages {
   stage('Code Checkout') {
-    stages {
-      // One or more stages need to be included within the stages block.
-    }
-  }
-
-  stage('Code Build') {
+    agent { label 'Slave​' }
     stages {
       // One or more stages need to be included within the stages block.
     }
@@ -17,9 +12,30 @@ stages {
     }
   }
 
+  stage('Code Build') {
+    stages {
+      echo "Building the project."
+      sudo chown -R jenkins:jenkins /app
+      sudo chmod 766 -R /app
+      docker build . -t sushanttickoo22/tomcat
+      docker push sushanttickoo22/tomcat
+    }
+  }
+
   stage('Code Deploy') {
     stages {
-      // One or more stages need to be included within the stages block.
+      echo "Deploying the application."
+      ssh jenkins@35.184.34.54
+      sudo chown -R jenkins:jenkins /app
+      sudo chmod 766 -R /app
+      cd /app
+      docker-compose -d up
+      
+      ssh jenkins@35.184.245.246
+      sudo chown -R jenkins:jenkins /app
+      sudo chmod 766 -R /app
+      cd /app
+      docker-compose -d up
     }
   }
 
