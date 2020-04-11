@@ -22,8 +22,6 @@ stages {
   stage('Code Build') {
     stages {
       echo "Building the project."
-      sudo chown -R jenkins:jenkins /app
-      sudo chmod 766 -R /app
       docker build . -t sushanttickoo22/tomcat
       docker push sushanttickoo22/tomcat
     }
