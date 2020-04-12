@@ -1,8 +1,8 @@
 pipeline {
   agent 'any'
   environment {
-    registry = "sushanttickoo22/tomcat"
-    registryCredential = ‘dockerhub’
+    registry = 'sushanttickoo22/tomcat'
+    registryCredential = 'dockerhub'
   }
   stages {
     stage('Build') {
