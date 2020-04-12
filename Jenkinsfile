@@ -17,7 +17,14 @@ pipeline {
           sh 'docker push sushanttickoo22/tomcat:latest'
       }
     }
-  }
+  } 
+    stage{'Deployment') {
+      steps {
+        sh 'ssh jenkins@35.184.34.54'
+        cd /app/
+        sh 'docker compose up'  
+      }
+    }
     }
   }
 }
