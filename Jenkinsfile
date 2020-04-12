@@ -12,8 +12,12 @@ pipeline {
     }
   stage('Publish') {
       steps{    
-        sh 'docker push sushanttickoo22/tomcat:latest'
+        script {
+          docker.withRegistry( '', registryCredential ) {
+          sh 'docker push sushanttickoo22/tomcat:latest'
       }
+    }
+  }
     }
   }
 }
