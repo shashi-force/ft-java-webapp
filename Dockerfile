@@ -18,8 +18,6 @@ RUN apt-get install -y curl git tmux htop maven sudo
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs build-essential
 
-WORKDIR /usr/src
-
 RUN curl --insecure -o ./sonarscanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.0.0.1744-linux.zip && \
 	unzip sonarscanner.zip && \
 	rm sonarscanner.zip && \
