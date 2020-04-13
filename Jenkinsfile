@@ -21,10 +21,8 @@ pipeline {
    }
     stage('Deploy'){  
       steps{
-        script{
             sh 'ssh root@35.184.245.246 docker-compose down'
-            sh 'ssh root@35.184.245.246 docker-compose up -d''
-        }
+            sh 'ssh root@35.184.245.246 docker-compose up -d'
       }
     }
   } 
