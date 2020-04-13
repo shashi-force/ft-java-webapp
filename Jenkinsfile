@@ -19,8 +19,10 @@ pipeline {
      }
     }
    }
-  node{  
-  def remote = [:]
+  stage('Deploy'){  
+      steps{
+        node{  
+    def remote = [:]
     remote.host = '35.184.245.246'
     remote.user = 'jenkins'
     remote.password = '1234'
@@ -29,7 +31,9 @@ pipeline {
       sshCommand remote: remote, command: "cd /app/"
       sshCommand remote: remote, command: "docker-compose -d down"
       sshCommand remote: remote, command: "docker-compose -d up"
+         }
+       }
+      }
     }
-  }
-}
-}  
+  } 
+} 
