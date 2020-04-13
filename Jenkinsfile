@@ -19,6 +19,7 @@ pipeline {
      }
     }
    }
+  node{  
   def remote = [:]
     remote.host = '35.184.245.246'
     remote.user = 'jenkins'
@@ -26,8 +27,9 @@ pipeline {
     remote.allowAnyHosts = true
     stage('Remote SSH') {
       sshCommand remote: remote, command: "cd /app/"
-      sshCommand remote: remote, command: "docker compose down"
-      sshCommand remote: remote, command: "docker compose up"
+      sshCommand remote: remote, command: "docker-compose -d down"
+      sshCommand remote: remote, command: "docker-compose -d up"
     }
   }
+}
 }  
