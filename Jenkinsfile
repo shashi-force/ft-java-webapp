@@ -10,7 +10,7 @@ pipeline {
         sh 'docker build -f "Dockerfile" -t sushanttickoo22/tomcat:latest .'
       }
     }
-  stage('Publish') {
+    stage('Publish') {
       steps{    
         script {
           docker.withRegistry( '', registryCredential ) {
@@ -19,21 +19,13 @@ pipeline {
      }
     }
    }
-  stage('Deploy'){  
+    stage('Deploy'){  
       steps{
-        node{  
-    def remote = [:]
-    remote.host = '35.184.245.246'
-    remote.user = 'jenkins'
-    remote.password = '1234'
-    remote.allowAnyHosts = true
-    stage('Remote SSH') {
-      sshCommand remote: remote, command: "cd /app/"
-      sshCommand remote: remote, command: "docker-compose -d down"
-      sshCommand remote: remote, command: "docker-compose -d up"
-         }
-       }
+        script{
+            sh 'ssh root@35.184.245.246 docker-compose down'
+            sh 'ssh root@35.184.245.246 docker-compose up -d''
+        }
       }
     }
   } 
-} 
+}
