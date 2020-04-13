@@ -1,5 +1,5 @@
 pipeline {
-  agent 'any'
+  agent 'slave'
   environment {
     registry = 'sushanttickoo22/tomcat'
     registryCredential = 'dockerhub'
